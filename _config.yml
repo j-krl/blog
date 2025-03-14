@@ -1,0 +1,12 @@
+title: jk's blog
+github_username: bread-man88
+markdown: kramdown
+
+header_pages:
+  - index.html
+  - archive.html
+
+archive_categories:
+  - programming
+  - quotes
+
