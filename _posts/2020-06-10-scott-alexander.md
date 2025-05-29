@@ -3,6 +3,7 @@ title: "Scott Alexander on Signaling"
 layout: post
 category: quotes
 date: 2020-06-10
+published: false
 ---
 
 When signaling, the more expensive and useless the item is, the more effective it is as a signal. Although eyeglasses are expensive, they’re a poor way to signal wealth because they’re very useful; a person might get them not because they are very rich but because they really need glasses. On the other hand, a large diamond is an excellent signal; no one needs a large diamond, so anybody who gets one anyway must have money to burn.
