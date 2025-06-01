@@ -1,5 +1,5 @@
 title: jk's blog
-github_username: bread-man88
+github_username: j-krl
 markdown: kramdown
 
 header_pages:
@@ -7,6 +7,6 @@ header_pages:
   - archive.html
 
 archive_categories:
-  - programming
+  - vim
   # - quotes
 

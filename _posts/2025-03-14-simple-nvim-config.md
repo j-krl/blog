@@ -1,7 +1,7 @@
 ---
 title: "Neovim in <50 lines"
 layout: post
-category: programming
+category: vim
 date: 2025-03-14
 ---
 
@@ -200,7 +200,6 @@ If running only 5 plugins doesn't satiate you, there's a few more great ones I c
 - **tpope/vim-surround**: A handy plugin for surrounding sections of code with brackets and quotations. This one is so widely used it should debatably be in Neovim core.
 - **unblevable/quick-scope**: A small plugin that highlights unique characters in words on the current line making F/f/T/t horizontal navigation much easier.
 - **tpope/vim-fugitive**: This is an incredible plugin for integrating git into your Vim editing. The main feature I use from it is the interactive blames, where for any line of code I can reblame at the parent commit and see when changes happened.
-- **mbbill/undotree**: Vim has a powerful concept of the undo tree built in which lets you navgiate through the history of undos of any file. This plugin gives a nice UI to interface with that feature which is difficult to navigate on its own.
 - **folke/which-key.nvim**: This plugin pops a handy floating window at the bottom of the screen that shows the currently valid keymaps. It will update as you press keys in sequence. I learned a ton about Neovim through using this initially.
 
 ## This is not the end
