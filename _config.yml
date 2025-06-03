@@ -5,6 +5,7 @@ markdown: kramdown
 header_pages:
   - index.html
   - archive.html
+  - about.md
 
 archive_categories:
   - vim
