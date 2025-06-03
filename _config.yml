@@ -6,6 +6,7 @@ header_pages:
   - index.html
   - archive.html
   - about.md
+  - projects.md
 
 archive_categories:
   - vim
