@@ -52,6 +52,27 @@ nnoremap ]A <cmd>last<bar>args<cr><esc>
 
 We're going to the next or previous arglist file, but then printing the list afterwards. This way when you hit `[a` or `]a` you can see the result of your command and if you need to iterate again. I've added `<esc>` to the end of the command because if the list is long enough to span multiple lines we don't want the dreaded "Hit ENTER" behvaiour of the pager, so we'll skip it in those cases.
 
+One annoying thing about the `[a` and `]a` mappings is that they don't wrap when at the end or beginning of the list. If we want to get really fancy we can create our own `:next` and `:prev` commands that do that with a function like so:
+
+```vim
+nnoremap [a <cmd>call NavArglist(v:count1 * -1)<bar>args<cr><esc>
+nnoremap ]a <cmd>call NavArglist(v:count1)<bar>args<cr><esc>
+
+function! NavArglist(count)
+    let arglen = argc()
+    if arglen == 0
+        return
+    endif
+    let next = fmod(argidx() + a:count, arglen)
+    if next < 0
+        let next += arglen
+    endif
+    exe float2nr(next + 1) .. 'argu'
+endfunction
+```
+
+In `NavArglist` We use Vim builtins like `argc()` to get the length of the arglist and `argidx()` to get the current arglist index. Then we can use modulo division with the passed count to navigate to the new index after wrapping.
+
 Lastly, we want to be able to jump to an arglist file by index. We can do that with the following command:
 
 ```
