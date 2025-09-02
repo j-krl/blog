@@ -35,7 +35,7 @@ For file name search you'll need two external programs:
 
 It also wouldn't hurt to install [ripgrep](https://github.com/BurntSushi/ripgrep) now, but it's not yet necessary.
 
-I am on nvim 0.11.3, the stable Neovim version as of this writing. I didn't do a ton of testing but I believe all of this should work on newer Vim versions that include 'findfunc'. There has even been [some recent improvements](https://github.com/vim/vim/commit/7e0df5eee9eab872261fd5eb0068cec967a2ba77) which are not yet on stable to the `matchfuzzy()` algorithm, which will be used in part 2 of this post.
+I am on nvim 0.11.3, the stable Neovim version as of this writing. I didn't do a ton of testing but I believe all of this should work on newer Vim versions that include 'findfunc'. There has even been [some recent improvements](https://github.com/vim/vim/commit/7e0df5eee9eab872261fd5eb0068cec967a2ba77) which are not yet on stable to the `matchfuzzy()` algorithm, which will be used in part 2 of this post. You could avoid using fzf altogether here if you adapted my findfunc to use `matchfuzzy()` instead of piping into fzf. I'll continue with fzf because I find I get better matches with it (on nvim 0.11.3 at least).
 
 Let's get to it!
 
