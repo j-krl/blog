@@ -1,5 +1,5 @@
 ---
-title: "Ditching the Vim fuzzy finder plugin part 1: :find"
+title: "Ditching the Vim fuzzy finder part 1: :find"
 layout: post
 category: vim
 date: 2025-09-02
