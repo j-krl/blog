@@ -1,5 +1,5 @@
 ---
-title: "Ditching the Vim fuzzy finder part 1: :find"
+title: "Ditching the Vim fuzzy finder plugin part 1: :find"
 layout: post
 category: vim
 date: 2025-09-02
@@ -35,7 +35,7 @@ For file name search you'll need two external programs:
 
 It also wouldn't hurt to install [ripgrep](https://github.com/BurntSushi/ripgrep) now, but it's not yet necessary.
 
-I am on nvim 0.11.3, the stable Neovim version as of this writing. I didn't do a ton of testing but I believe all of this should work on newer Vim versions that include 'findfunc'. There has even been [some recent improvements](https://github.com/vim/vim/commit/7e0df5eee9eab872261fd5eb0068cec967a2ba77) which are not yet on stable to the `matchfuzzy()` algorithm, which will be used in part 2 of this post. You could avoid using fzf altogether here if you adapted my findfunc to use `matchfuzzy()` instead of piping into fzf. I'll continue with fzf because I find I get better matches with it (on nvim 0.11.3 at least).
+I am on nvim 0.11.3, the stable Neovim version as of this writing. I didn't do a ton of testing but I believe all of this should work on newer Vim versions that include 'findfunc'. You could avoid using fzf altogether here if you adapted my findfunc to use `matchfuzzy()` (the built-in Vim fuzzy matching function) instead of piping into fzf. I'll continue with fzf here because I find I get better matches with it (on nvim 0.11.3 at least).
 
 Let's get to it!
 
@@ -177,4 +177,6 @@ endfunction
 Not bad for a solid replacement of some major fuzzy finder functionality!
 
 That's all I've got for now. This post got long enough that I will break :grep into a part 2 post in the coming days. If I didn't convince you to ditch fzf.vim or telescope hopefully you learned something at the very least!
+
+<!-- Mention habamax's solution how he caches the files: https://www.reddit.com/r/vim/comments/1mvzitt/yet_another_simple_fuzzy_file_finder/ -->
 
