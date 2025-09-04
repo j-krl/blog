@@ -30,12 +30,12 @@ When you execute :grep, by default a pager of the results are shown, you hit ENT
 
 A fundamental aspect of :grep and ripgrep is the ability to match based on a regex pattern. However, I find myself reaching for :grep mostly to search for fixed strings, and usually don't get too complex with the regex patterns. I usually use it as a quick navigation tool to search for the simplest substring possible to get me to what I'm looking for.
 
-There is one exception to this rule: greedy wildcards. Sometimes I can get the best match possible if I search for two different substrings that exist on the same line. Greedy wildcard match is `.*?` in ripgrep, and with this knowledge we can make some solid :grep mappings:
+There is one exception to this rule: greedy wildcards. Sometimes I can get the best match possible if I search for two different substrings that exist on the same line. Greedy wildcard match is `.*` in ripgrep, and with this knowledge we can make some solid :grep mappings:
 
 ```vimscript
 nnoremap <leader>g :grep ''<left>
 nnoremap <leader>G :grep <C-R><C-W><cr>
-cnoremap <C-space> .*?
+cnoremap <C-space> .*
 "nvim only
 cnoremap <A-9> \(
 cnoremap <A-0> \)
@@ -79,7 +79,7 @@ command! -nargs=+ -complete=file_in_path Zgrep call FuzzyFilterGrep(<f-args>)
 
 function! FuzzyFilterGrep(query, path=".") abort
     exe "grep! '" .. a:query .. "' " .. a:path
-    let sort_query = substitute(a:query, '\.\*?', '', 'g')
+    let sort_query = substitute(a:query, '\.\*', '', 'g')
     let sort_query = substitute(sort_query, '\\\(.\)', '\1', 'g')
     call FuzzyFilterQf(sort_query)
     cfirst
@@ -93,7 +93,7 @@ It's a little rough around the edges, but the process is:
 2. Attempt to "de-regexify" the provided pattern
 3. Fuzzy filter the qflist based on the new pattern
 
-I find this command works best for matching a few short substrings. Say in a python project I want to find a `class Event`, but there are many other classes like `class EventAction`, `class EventLog`, etc. If I do `:Zgrep cl.*?Ev`, I'll grep for all these class definitions, then match on the most concise one (`class Event`). I use this workflow regularly and it feels very smooth.  
+I find this command works best for matching a few short substrings. Say in a python project I want to find a `class Event`, but there are many other classes like `class EventAction`, `class EventLog`, etc. If I do `:Zgrep cl.*Ev`, I'll grep for all these class definitions, then match on the most concise one (`class Event`). I use this workflow regularly and it feels very smooth.  
 
 I am sure a lot of improvements could be made here. My attempt to remove regex is very simple, just removing greedy wildcards and backslashes (generally all the regex I use for :grep). The function also takes exactly one or two arguments, so you'll have to escape any spaces in the pattern (nvim mapping provided for this). If you don't find yourself grepping within a directory much you could remove the `path` argument and accept any number with `...`, then join them like I did in `FuzzyFilterQf()`. Whatever works best for you.
 
@@ -157,7 +157,7 @@ nnoremap <leader>cf :Cfilter<space>
 nnoremap <leader>cz :Cfuzzy<space> 
 nnoremap <leader>co :colder<space> 
 nnoremap <leader>cn :cnewer<space> 
-cnoremap <C-space> .*?
+cnoremap <C-space> .*
 "nvim only
 cnoremap <A-9> \(
 cnoremap <A-0> \)
@@ -170,7 +170,7 @@ command! -nargs=+ -complete=file_in_path Fzfgrep call FzfGrep(<f-args>)
 
 function! FuzzyFilterGrep(query, path=".") abort
     exe "grep! '" .. a:query .. "' " .. a:path
-    let sort_query = substitute(a:query, '\.\*?', '', 'g')
+    let sort_query = substitute(a:query, '\.\*', '', 'g')
     let sort_query = substitute(sort_query, '\\\(.\)', '\1', 'g')
     call FuzzyFilterQf(sort_query)
     cfirst
