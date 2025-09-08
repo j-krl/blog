@@ -59,7 +59,7 @@ fd --hidden . | fzf --filter=<pattern>
 
 We pipe all the files in our repo into fzf, then let fzf return the results fuzzy ranked based on our pattern. Now let's adapt the command to Vim and put it inside our findfunc:
 
-```vimscript
+```vim
 function! FuzzyFindFunc(cmdarg, cmdcomplete)
     return systemlist("fd --hidden . \| fzf --filter='" 
         \.. a:cmdarg .. "'")
@@ -72,7 +72,7 @@ endif
 
 Then we'll add a couple mappings for quick finding:
 
-```vimscript
+```vim
 nnoremap <leader>f :find<space>
 nnoremap <leader>F :vert sf<space>
 ```
@@ -89,7 +89,7 @@ You can read `:h findfunc`, but the second findfunc arg `cmdcomplete` is for det
 
 wildmode is just the completion mode used when you hit your command mode completion key (\<tab\> by default). :find will be a lot cleaner when you set it like so in your .vimrc:
 
-```vimscript
+```vim
 set wildmenu
 set wildmode=noselect:longest,full
 ```
@@ -104,7 +104,7 @@ If you want to explore true autocomplete options for command mode, check out [th
 
 Commonly in fuzzy finder plugins there will be a map to add the results of the search to the quickfix list. We can do that with a function, command and mapping:
 
-```vimscript
+```vim
 function! FdSetQuickfix(...) abort
     let fdresults = systemlist("fd -t f --hidden " .. join(a:000, " "))
     if v:shell_error
@@ -127,13 +127,13 @@ You can run :Findqf and pass any arguments you want to `fd`, similarly to how :g
 
 While not directly related to :find, I wanted to mention one more powerful navigation tool in the :buffers command. We can emulate another fuzzy finder feature: navigating through most recently used buffers. With our current wildmode setting, triggering a completion for the :buffers command shows the current list of buffers in order of buffer index -- not particularly useful. What we're really looking for is the "lastused" wildmode option. Let's add it to the wildmode we set earlier:
 
-```vimscript
+```vim
 set wildmode=noselect:longest:lastused,full
 ```
 
 As documented in `:h wildmode`, if we trigger a completion on a buffer name, lastused will sort buffers by last time used. We can add a simple mapping:
 
-```vimscript
+```vim
 nnoremap <leader>b :b<space>
 ```
 
@@ -143,7 +143,7 @@ nnoremap <leader>b :b<space>
 
 Putting it all together, here's all our :find and :buffers config:
 
-```vimscript
+```vim
 set wildmenu
 set wildmode=noselect:longest:lastused,full
 if executable('fd') && executable('fzf')

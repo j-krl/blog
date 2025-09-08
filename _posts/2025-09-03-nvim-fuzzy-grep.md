@@ -3,7 +3,6 @@ title: "Ditching the Vim fuzzy finder plugin part 2: :grep"
 layout: post
 category: vim
 date: 2025-09-03
-published: true
 ---
 
 This post is a continuation of [my last post](https://jkrl.me/vim/2025/09/02/nvim-fuzzy-find.html) on ditching the Vim fuzzy finder plugin. In that post I covered file name search with :find and :buffers. In this post I will cover file content search with :grep.
@@ -16,7 +15,7 @@ If you followed my last post you should have already installed [fzf](https://git
 
 Vim has two flavours of grep: :vimgrep and :grep. :vimgrep is the internal Vim option for grepping, whereas :grep is a command that relies on an external program (in our case `rg`). The command called in the shell when we call :grep is defined by 'grepprg'. Let's set ours like so:
 
-```vimscript
+```vim
 set grepprg=rg\ --vimgrep\ --hidden\ -g\ '!.git/*'
 ```
 
@@ -32,7 +31,7 @@ A fundamental aspect of :grep and ripgrep is the ability to match based on a reg
 
 There is one exception to this rule: greedy wildcards. Sometimes I can get the best match possible if I search for two different substrings that exist on the same line. Greedy wildcard match is `.*` in ripgrep, and with this knowledge we can make some solid :grep mappings:
 
-```vimscript
+```vim
 nnoremap <leader>g :grep ''<left>
 nnoremap <leader>G :grep <C-R><C-W><cr>
 cnoremap <C-space> .*
@@ -51,7 +50,7 @@ Vim does have a built in way to regex filter quickfix lists with :Cfilter, which
 
 But we're trying to do fuzzy matching here, so let's make a command similar to :Cfilter and call it :Cfuzzy. We can define the command with some mappings like so:
 
-```vimscript
+```vim
 nnoremap <leader>cf :Cfilter<space> 
 nnoremap <leader>cz :Cfuzzy<space> 
 nnoremap <leader>co :colder<space> 
@@ -70,7 +69,7 @@ The `FuzzyFilterQf()` function accepts any number of arguments and joins them in
 
 I have found it very useful to :grep for a pattern and then fuzzy match it all in one step. I call the command `Zgrep`:
 
-```vimscript
+```vim
 nnoremap <leader>z :Zgrep<space>
 "nvim only
 cnoremap <A-space> \<space>
@@ -114,7 +113,7 @@ There's actually a good reason this wasn't my first recommendation: this is a *v
 
 However, I think this approach is still worth exploring, because it is very convenient when used properly. We'll just temporarily change our grepprg to have rg pipe into fzf, then run grep normally:
 
-```vimscript
+```vim
 " WARNING: slow!
 nnoremap <leader>Z :Fzfgrep<space>
 
@@ -135,7 +134,7 @@ This command has the same issue with escaping spaces because of the one or two a
 
 Here is all the code from part 1 and part 2 of my post, implementing both file name and file content fuzzy matching:
 
-```vimscript
+```vim
 packadd cfilter
 
 set wildmenu
