@@ -2,14 +2,11 @@ title: jk's blog
 description: "Jesse Kearl's blog"
 github_username: j-krl
 markdown: kramdown
-
 header_pages:
   - index.html
   - archive.html
   - about.md
   - projects.md
-
 archive_categories:
   - vim
-  # - quotes
-
+  - shell

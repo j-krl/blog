@@ -5,9 +5,7 @@ title: Home
 
 <div class="home">
   <div class="post-list">
-
-    {% assign programming_posts = site.posts | where: "category","vim" %}
-    {% for post in programming_posts limit:5 %}
+    {% for post in site.posts limit:5 %}
 
     <article class="post_card post">
       <header class="post_header">
@@ -25,7 +23,6 @@ title: Home
         </p> 
       </div>
       <footer class="post_meta">
-
 
         <!--{% if post.location %}-->
         <!--<span class="author-location">-->

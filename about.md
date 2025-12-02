@@ -8,6 +8,6 @@ permalink: /about/
 
 My name is Jesse Kearl and I am an SRE at [Tempus](https://www.tempus.com/). I also have previous experience in full stack development. I am based out of Calgary, AB.
 
-In my free time I enjoy squash, golf, rock climbing, and tweaking my Vim config.
+In my free time I enjoy squash, golf, rock climbing, and playing around in the terminal.
 
 Links: <data data-icon="ei-sc-github"></data> [GitHub](https://www.github.com/j-krl) <data data-icon="ei-sc-linkedin"> </data> [LinkedIn](https://www.linkedin.com/in/jesse-kearl/)
