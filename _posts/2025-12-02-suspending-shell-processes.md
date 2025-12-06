@@ -2,6 +2,11 @@
 title: "Replacing tmux splits with shell job control in zsh"
 layout: post
 category: shell
+tags:
+    - programming
+    - tech
+    - shell
+    - zsh
 date: 2025-11-28
 ---
 
@@ -77,12 +82,12 @@ Lastly we can define `fg` and `kill` commands for job indexes 1-9. Unfortunately
 
 ```zsh
 for i in {1..9}; do
-	eval "fg_${i}_widget() { zle -I; fg %${i}; }"
-	eval "kill_job_${i}_widget() { kill %${i} && fg %${i}; }"
-	eval "zle -N fg_${i}_widget"
-	eval "zle -N kill_job_${i}_widget"
-	eval "bindkey '^J${i}' fg_${i}_widget"
-	eval "bindkey '^J^K${i}' kill_job_${i}_widget"
+    eval "fg_${i}_widget() { zle -I; fg %${i}; }"
+    eval "kill_job_${i}_widget() { kill %${i} && fg %${i}; }"
+    eval "zle -N fg_${i}_widget"
+    eval "zle -N kill_job_${i}_widget"
+    eval "bindkey '^J${i}' fg_${i}_widget"
+    eval "bindkey '^J^K${i}' kill_job_${i}_widget"
 done
 ```
 
