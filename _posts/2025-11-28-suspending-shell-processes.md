@@ -7,7 +7,7 @@ tags:
     - tech
     - shell
     - zsh
-date: 2025-12-02
+date: 2025-11-28
 ---
 
 The more comfortable I get in tmux and the terminal the more averse I become to having more than two windows, and *especially* more than two panes in a window. At some point we've all been in this situation:
