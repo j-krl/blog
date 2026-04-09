@@ -1,0 +1,26 @@
+---
+layout: default
+title: Tags
+---
+
+<div>
+
+  <section class="archive_list">
+    {% assign sorted_tags = site.tags | sort %}
+    {% for tag in sorted_tags %}
+
+    <div class="category-name">
+      <h2>{{ tag[0] | downcase }}</h2>
+    </div>
+    {% assign tag_posts = tag[1] | sort: "date" | reverse %}
+    {% for post in tag_posts %}
+    <div class="post_title">
+      <a href="{{ post.url | relative_url }}">{{ post.title | downcase }}</a>
+      <span class="date">{{ post.date | date: "%-d %b, %Y" }}</span>
+    </div>
+    {% endfor %}
+
+    {% endfor %}
+  </section>
+
+</div>
