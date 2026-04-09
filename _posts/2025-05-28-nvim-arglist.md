@@ -1,7 +1,6 @@
 ---
 title: "File navigation with the Vim arglist"
 layout: post
-category: vim
 tags:
     - vim
 date: 2025-05-28

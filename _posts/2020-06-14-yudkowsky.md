@@ -2,7 +2,6 @@
 title: "Eliezer Yudkowsky on moral satisfaction"
 layout: post
 date: 2020-06-14
-category: quotes
 tags:
     - quotes
 published: false

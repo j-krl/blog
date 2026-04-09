@@ -1,7 +1,6 @@
 ---
 title: "Intro to Wireguard VPN"
 layout: post
-category: homelab
 tags:
     - networking
     - homelab

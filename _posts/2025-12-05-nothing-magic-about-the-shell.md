@@ -1,7 +1,6 @@
 ---
 title: "CMD vs ENTRYPOINT: There is nothing magic about the shell"
 layout: post
-category: shell
 tags:
     - docker
     - shell

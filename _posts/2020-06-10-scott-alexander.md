@@ -1,7 +1,6 @@
 ---
 title: "Scott Alexander on Signaling"
 layout: post
-category: quotes
 date: 2020-06-10
 tags:
     - quotes
