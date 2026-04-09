@@ -19,6 +19,15 @@ green     #859900  operators, other keywords
 .highlight {
     background-color: #eef;
     color: #586e75;
+    overflow-x: auto;
+
+    pre {
+        background-color: #eef;
+        min-width: 100%;
+        width: max-content;
+        box-sizing: border-box;
+        margin: 0;
+    }
     .c { color: #93a1a1 } /* Comment */
     .err{ color: #586e75 } /* Error */
     .g{ color: #586e75 } /* Generic */
