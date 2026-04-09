@@ -8,5 +8,6 @@ header_pages:
   - about.md
   - projects.md
 archive_categories:
-  - vim
+  - homelab
   - shell
+  - vim
