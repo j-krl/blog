@@ -193,7 +193,7 @@ PING 192.168.99.200 (192.168.99.200): 56 data bytes
 4 packets transmitted, 4 packets received, 0.0% packet loss
 ```
 
-Success! That's all there is to it. Wireguard an extremely simple VPN protocol that's perfect for a homelab.
+Success! That's all there is to it. Wireguard is an extremely simple VPN protocol that's perfect for a homelab.
 
 ---
 
