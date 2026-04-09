@@ -120,7 +120,7 @@ body {
   }
 
   .nav .page-link li {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: 0;
 
     a {
@@ -193,6 +193,10 @@ input#menu-toggle {
 
 .post_title {
   margin-bottom:0.5rem;
+
+  @include media-query($on-palm) {
+    margin-bottom: 1.25rem;
+  }
 }
 
 .post_date {
