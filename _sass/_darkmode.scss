@@ -32,7 +32,7 @@
   svg {
     width: 16px;
     height: 16px;
-    fill: currentColor;
+    fill: #222;
   }
 
   .icon-sun { display: none; }
@@ -42,6 +42,9 @@
 /* Dark mode active state */
 html[data-theme="dark"] {
   .dark-mode-toggle {
+    svg {
+      fill: #d4d4d4;
+    }
     .icon-sun { display: block; }
     .icon-moon { display: none; }
   }
