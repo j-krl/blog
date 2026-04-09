@@ -3,10 +3,7 @@ title: "Ditching the Vim fuzzy finder plugin part 1: :find"
 layout: post
 category: vim
 tags:
-    - tech
-    - programming
     - vim
-    - neovim
 date: 2025-09-02
 ---
 

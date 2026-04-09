@@ -3,10 +3,7 @@ title: "File navigation with the Vim arglist"
 layout: post
 category: vim
 tags:
-    - tech
-    - programming
     - vim
-    - neovim
 date: 2025-05-28
 ---
 

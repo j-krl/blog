@@ -5,32 +5,22 @@ title: Archive
 
 <div>
 
-  <!--<h2>Posts</h2>-->
-
   <section class="archive_list">
-    {% for category in site.archive_categories %}
+    {% assign sorted_tags = site.tags | sort %}
+    {% for tag in sorted_tags %}
 
     <div class="category-name">
-      <h2>{{ category | downcase }}</h2>
+      <h2>{{ tag[0] | downcase }}</h2>
     </div>
-    {% for post in site.posts %}
-    {%if post.categories contains category%}
-
+    {% assign tag_posts = tag[1] | sort: "date" | reverse %}
+    {% for post in tag_posts %}
     <div class="post_title">
       <a href="{{ post.url | relative_url }}">{{ post.title | downcase }}</a>
       <span class="date">{{ post.date | date: "%-d %b, %Y" }}</span>
     </div>
-
-    {% endif %}
     {% endfor %}
 
     {% endfor %}
-
   </section>
 
-  <!--<footer class="article-footer" mar>-->
-  <!--  {% include author.html %}-->
-  <!--</footer>-->
 </div>
-
-

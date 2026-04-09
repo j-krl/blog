@@ -3,7 +3,6 @@ title: "Intro to Wireguard VPN"
 layout: post
 category: homelab
 tags:
-    - tech
     - networking
     - homelab
 date: 2026-04-08

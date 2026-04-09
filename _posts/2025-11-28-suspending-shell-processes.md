@@ -3,8 +3,6 @@ title: "Replacing tmux splits with shell job control in zsh"
 layout: post
 category: shell
 tags:
-    - programming
-    - tech
     - shell
     - zsh
 date: 2025-11-28

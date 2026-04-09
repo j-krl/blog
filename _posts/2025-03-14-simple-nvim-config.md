@@ -3,9 +3,7 @@ title: "Neovim in <50 lines"
 layout: post
 category: vim
 tags:
-    - tech
-    - programming
-    - neovim
+    - vim
 date: 2025-03-14
 ---
 
