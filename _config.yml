@@ -4,10 +4,7 @@ github_username: j-krl
 markdown: kramdown
 header_pages:
   - index.html
-  - archive.html
+  - tags.html
+
   - about.md
   - projects.md
-archive_categories:
-  - homelab
-  - shell
-  - vim
