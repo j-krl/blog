@@ -97,22 +97,13 @@ body {
 
 @include media-query($on-laptop) {
   .site-nav {
-
-    /* flex box */
-    display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
-    display: -moz-box; /* Firefox 17- */
-    display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
-    display: -moz-flex; /* Firefox 18+ */
-    display: -ms-flexbox; /* IE 10 */
-    display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */// Import partials from `sass_dir` (defaults to `_sass`)
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     opacity: 0;
     height: 0;
-    // -webkit-transition: all .4s;
-    // transition: all .4s;
-
-    -webkit-justify-content: center;
-    justify-content:center;
+    overflow: hidden;
 
     @include media-query($on-laptop) {
       border-top:1px solid #ddd;
@@ -123,7 +114,19 @@ body {
   #menu-toggle:checked+.site-nav {
     opacity: 1;
     height: auto;
-    margin-bottom:-25px;
+    overflow: visible;
+    margin-bottom: 0;
+    padding: 1rem 0;
+  }
+
+  .nav .page-link li {
+    font-size: 2rem;
+    margin-bottom: 0;
+
+    a {
+      display: block;
+      padding: 0.75rem 1.5rem;
+    }
   }
 }
 
