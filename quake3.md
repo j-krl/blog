@@ -9,15 +9,13 @@ Welcome to the dedicated server homepage for `quake3.jkrl.me`.
 
 ## Installing
 
-- [Quake 3: Arena on GOG](https://www.gog.com/en/game/quake_iii_arena)
-- [ioquake3 Downloads Page](https://ioquake3.org/get-it/) (windows/mac/linux)
-- ioquake3 Setup Guides:
-    - [Windows](https://ioquake3.org/help/players-guide/#windows)
-    - [Mac](https://ioquake3.org/help/players-guide/#macos)
+For this guide we're going to assume you already have a `baseq3/` folder with the original `pak0.pk3` game file and the ioquake3 `pak1.pk3` through `pak8.pk3` patch files. In this case all you need to do is:
 
-The server uses ioquake3, which is an open source Quake 3 game engine. The Quake 3 game files are still required.
+1. Create an `ioquake3/` folder wherever your applications live
+2. Download the [ioquake3 game engine](https://ioquake3.org/get-it/), then extract the application and put it in that folder
+3. Put your `baseq3/` folder in the `ioquake3/` folder as well
 
-You will have to download the Quake 3 game, install the ioquake3 engine, and then set up the engine to use the game files using one of the setup guides above.
+You can now run ioquake3.
 
 ## Using the Quake 3 Console
 
@@ -34,7 +32,7 @@ To connect to the server, set the password and then connect using the domain and
 
 ## RCON
 
-RCON is Quake 3's remote console. You can authenticate to it with `/rconpassword <password>`. After you've authenticated you can run `/rcon <command>` using one of the commands below to change the server's configuration. If you run a command without the `/rcon` suffix you'll only be running it on your local machine and not for the whole server.
+RCON is Quake 3's remote console. You can authenticate to it with `/rconpassword <password>`. After you've authenticated you can run `/rcon <command>` using one of the commands below to change the server's configuration. If you run a command without the `/rcon` prefix you'll only be running it on your local machine and not for the whole server.
 
 ## Map Rotations
 
