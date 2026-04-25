@@ -34,11 +34,11 @@ To connect to the server, set the password and then connect using the domain and
 
 RCON is Quake 3's remote console. You can authenticate to it with `/rconpassword <password>`. After you've authenticated you can run `/rcon <command>` using one of the commands below to change the server's configuration.
 
-Commands only require `/rcon` if the change the configuration of the server itself. For example, to simply change teams `/team` is find, but to restart the game on the current map you're going to need `/rcon map_restart`.
+Commands only require `/rcon` if they change the configuration of the server itself. For example, to simply change teams `/team` is fine, but to restart the game on the current map you're going to need `/rcon map_restart`.
 
 ## Map Rotations
 
-I have set up a couple preset map rotations for Team Deathmatch and CTF. The map rotations are stored in files on the server. You can run the different game modes with:
+I have set up a couple preset map rotations for Team Deathmatch and CTF. The map rotations are stored in `.cfg` files on the server. You can run the different game modes and their map rotations with:
 
 ```
 /rcon exec td.cfg       # for team deathmatch
@@ -65,7 +65,7 @@ Here are some examples of useful in-game commands. Most will require `/rcon`:
 
 ## Restore Default Server Settings
 
-If you want to restore the server defaults, run `/rcon exec server.cfg`.
+If you want to restore the server defaults, run `/rcon exec server.cfg`. This restores only the base game settings. To set the map rotations you'll still have to exec the gametype files specified above.
 
 ## Best Maps
 
