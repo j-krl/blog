@@ -127,12 +127,13 @@ html[data-theme="dark"] {
   }
 
   .article-content a {
-    border-bottom-color: #5a7aaa;
+    color: #4dc9c9;
+    border-bottom-color: #4dc9c9;
   }
 
   .article-content a:hover {
-    color: #7a9acc;
-    border-bottom-color: #7a9acc;
+    color: #39cccc;
+    border-bottom: 1px solid #39cccc;
   }
 
   .category-name h2 {

@@ -226,12 +226,13 @@ p.readmore {
 }
 
 .article-content a {
-  border-bottom:1px dotted blue;
+  color: #2a9d9d;
+  border-bottom:1px dotted #2a9d9d;
   text-decoration:none;
 }
 .article-content a:hover {
-  color:blue;
-  border-bottom:1px dotted blue;
+  color:#1d7a7a;
+  border-bottom:1px solid #1d7a7a;
 }
 
 .article-footer {
