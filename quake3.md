@@ -30,6 +30,12 @@ To connect to the server, set the password and then connect using the domain and
 /connect quake3.jkrl.me:27960
 ```
 
+If you haven't run the game before, also run the following command to enable automatic downloads of custom maps from the server:
+
+```
+/cl_allowdownload 1
+```
+
 ## RCON
 
 RCON is Quake 3's remote console. You can authenticate to it with `/rconpassword <password>`. After you've authenticated you can run `/rcon <command>` using one of the commands below to change the server's configuration.
