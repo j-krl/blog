@@ -54,7 +54,7 @@ I have set up a couple preset map rotations for Team Deathmatch, FFA, and CTF. T
 
 Each have a differing number of maps in their rotation labelled `<gametype><number>` (i.e. `td1`, `ctf4`, `ffa2`). You can select Team Deathmatch map 5 from the rotation with `/rcon vstr td5`, and when that game ends the server will carry on to `td6`, etc.
 
-If you ever manually select a map with `/rcon map <mapname>`, the map rotation will be broken and the server will keep replaying the same map. You can get back on the map rotation with an `/rcon vstr` as above or by restarting the game mode with `/rcon exec`.
+If you ever manually select a map with `/rcon map <mapname>`, the map rotation will be broken and the server will keep replaying the same map. You can get back on the map rotation with one of the `exec` or `vstr` commands just mentioned.
 
 ## Commands
 
