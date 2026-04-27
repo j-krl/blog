@@ -44,12 +44,17 @@ Commands only require `/rcon` if they change the configuration of the server its
 
 ## Map Rotations
 
-I have set up a couple preset map rotations for Team Deathmatch and CTF. The map rotations are stored in `.cfg` files on the server. You can run the different game modes and their map rotations with:
+I have set up a couple preset map rotations for Team Deathmatch, FFA, and CTF. The map rotations are stored in `.cfg` files on the server. You can run the different game modes and their map rotations with:
 
 ```
 /rcon exec td.cfg       # for team deathmatch
 /rcon exec ctf.cfg      # for ctf
+/rcon exec ffa.cfg      # for ffa
 ```
+
+Each have a differing number of maps in their rotation labelled `<gametype><number>` (i.e. `td1`, `ctf4`, `ffa2`). You can select Team Deathmatch map 5 from the rotation with `/rcon vstr td5`, and when that game ends the server will carry on to `td6`, etc.
+
+If you ever manually select a map with `/rcon map <mapname>`, the map rotation will be broken and the server will keep replaying the same map. You can get back on the map rotation with an `/rcon vstr` as above or by restarting the game mode with `/rcon exec`.
 
 ## Commands
 
@@ -72,22 +77,4 @@ Here are some examples of useful in-game commands. Most will require `/rcon`:
 ## Restore Default Server Settings
 
 If you want to restore the server defaults, run `/rcon exec server.cfg`. This restores only the base game settings. To set the map rotations you'll still have to exec the gametype files specified above.
-
-## Best Maps
-
-Here's the best maps I'd recommend:
-
-Team DM / FFA:
-
-- q3dm5
-- q3dm6
-- q3dm7
-- q3dm15
-- q3dm16
-- q3dm17
-
-CTF:
-
-- q3ctf1
-- q3ctf4
 
