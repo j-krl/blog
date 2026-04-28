@@ -15,7 +15,7 @@ For this guide we're going to assume you already have a `baseq3/` folder with th
 2. Download the [ioquake3 game engine](https://ioquake3.org/get-it/), then extract the application and put it in that folder
 3. Put your `baseq3/` folder in the `ioquake3/` folder as well
 
-Here's an example folder structure:
+Here's an example folder structure on Mac:
 
 ```
 ioquake3
@@ -29,7 +29,7 @@ ioquake3
 │   ├── pak6.pk3
 │   ├── pak7.pk3
 │   └── pak8.pk3
-└── ioquake3.app/ioquake3.exe
+└── ioquake3.app
 ```
 
 You can now run ioquake3.
