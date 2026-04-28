@@ -29,7 +29,7 @@ ioquake3
 │   ├── pak6.pk3
 │   ├── pak7.pk3
 │   └── pak8.pk3
-└── ioquake3.app / ioquake3.exe
+└── ioquake3.app/ioquake3.exe
 ```
 
 You can now run ioquake3.
