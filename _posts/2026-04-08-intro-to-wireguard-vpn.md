@@ -4,6 +4,7 @@ layout: post
 tags:
     - networking
     - homelab
+    - wireguard
 date: 2026-04-08
 ---
 
