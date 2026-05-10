@@ -1,5 +1,5 @@
 ---
-title: "Intro to Wireguard VPN"
+title: "Wireguard Pt. 1: Introduction and Setup"
 layout: post
 tags:
     - networking

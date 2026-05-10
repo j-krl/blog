@@ -1,20 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   {% include head.html %}
   <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
 
-    const diagrams = Array.from(document.querySelectorAll('pre.mermaid'));
-    diagrams.forEach(el => { el.dataset.source = el.textContent.trim(); });
+    const diagrams = Array.from(document.querySelectorAll("pre.mermaid"));
+    diagrams.forEach((el) => {
+      el.dataset.source = el.textContent.trim();
+    });
 
     function getTheme() {
-      return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default';
+      return document.documentElement.getAttribute("data-theme") === "dark"
+        ? "dark"
+        : "default";
     }
 
     async function renderDiagrams() {
-      mermaid.initialize({ startOnLoad: false, theme: getTheme() });
-      diagrams.forEach(el => {
-        el.removeAttribute('data-processed');
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: getTheme(),
+        securityLevel: 'loose'
+      });
+      diagrams.forEach((el) => {
+        el.removeAttribute("data-processed");
         el.textContent = el.dataset.source;
       });
       await mermaid.run({ nodes: diagrams });
@@ -22,22 +30,18 @@
 
     renderDiagrams();
 
-    new MutationObserver(renderDiagrams).observe(
-      document.documentElement,
-      { attributes: true, attributeFilter: ['data-theme'] }
-    );
+    new MutationObserver(renderDiagrams).observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
   </script>
   <body>
     <div class="page-content">
       <div class="container">
-        <div class="three columns">
-          {% include header.html %}
-        </div>
+        <div class="three columns">{% include header.html %}</div>
 
-        <div class="nine columns" style="z-index:100;">
-          <div class="wrapper">
-            {{ content }}
-          </div>
+        <div class="nine columns" style="z-index: 100">
+          <div class="wrapper">{{ content }}</div>
         </div>
       </div>
       <!--{% include footer.html %} -->
