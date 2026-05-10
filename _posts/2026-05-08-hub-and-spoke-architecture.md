@@ -15,11 +15,11 @@ In my last post I demonstrated how to set up a simple 1:1 Wireguard VPN. In my h
 title: Partial mesh
 ---
 flowchart LR
-    ED@{shape: tag-rect, label: "External Device"}
+    ED@{shape: tag-rect, label: "External Host"}
     ED --> Gateway
-    Gateway -->|Port forward| n1@{ shape: tag-rect, label: "Node 1"}
-    Gateway -->|Port forward| n2@{ shape: tag-rect, label: "Node 2"}
-    Gateway -->|Port forward| n3@{ shape: tag-rect, label: "Node 3"}
+    Gateway -->|Port forward| n1@{ shape: tag-rect, label: "LAN Host 1"}
+    Gateway -->|Port forward| n2@{ shape: tag-rect, label: "LAN Host 2"}
+    Gateway -->|Port forward| n3@{ shape: tag-rect, label: "LAN Host 3"}
     subgraph LAN
         Gateway
         n1
@@ -28,7 +28,7 @@ flowchart LR
     end
 </pre>
 
-> **NOTE:** For all diagrams in this post, a rectangle with a diagonal notch represents a device with a Wireguard interface.
+> **NOTE:** For all diagrams in this post, a rectangle with a diagonal notch represents a device with Wireguard interface on the VPN.
 
 I have four Wireguard interfaces I'm maintaining in this design -- one for each device. Sometime after I set up the network I inherited a new laptop. To add the new laptop to my existing VPN I needed to update a total of *four* Wireduard config files. As the network grew the architecture felt less and less scalable, so I started looking into other designs for the network.
 
@@ -41,13 +41,14 @@ Enter hub-and-spoke networking. I learned about this design and implemented it f
 title: Hub-and-spoke
 ---
 flowchart LR
-    ED["External
-    Device"] --> Gateway
-    ED2["External
-    Device 2"] --> Gateway
-    Gateway -->|Port forward| n1["Node 1"]
-    n1 -. Forward .-> n2[Node 2]
-    n1 -. Forward .-> n3[Node 3]
+    ED@{ shape: tag-rect, label: "External
+    Host 1"} --> Gateway
+    ED2@{ shape: tag-rect, label: "External
+    Host 2"} --> Gateway
+    Gateway -->|Port forward| n1@{ shape: tag-rect, label: "LAN Host 1
+    (Wireguard Server)"}
+    n1 -. Forward .-> n2[LAN Host 2]
+    n1 -. Forward .-> n3[LAN Host 3]
     subgraph LAN
         Gateway
         n1
@@ -99,31 +100,49 @@ It's good to understand `iptables` broadly, but this is probably too much inform
 
 <pre class="mermaid" style="text-align: center;">
 ---
-title: Request with MASQUERADE
+title: Route path with MASQUERADE
 ---
 sequenceDiagram
-    participant EC as External Device
-    participant WS as Wireguard Server
-    participant N1 as LAN Device
-    EC->>WS: Src 192.168.100.10
-    WS->>N1: Src 192.168.1.1 (masq)
-    activate WS
-    N1-->>WS: Dest 192.168.1.1
-    deactivate WS
-    WS-->>EC: Dest 192.168.100.10
+    box External Host
+    participant EC as WG Interface (100.10)
+    end
+    box Wireguard Server
+    participant WS as WG Interface (100.1)
+    participant WL as LAN Interface (1.1)
+    end
+    box LAN Host
+    participant N1 as LAN Interface (1.2)
+    end
+    EC->>WS: Src 100.10
+    WS->>WL: Src 100.10 (forward)
+    WL->>N1: Src 1.1 (masq)
+    activate WL
+    N1-->>WL: Dest 1.1
+    deactivate WL
+    WL-->>WS: Dest 100.10 (unmasq)
+    WS-->>EC: Dest 100.10
 </pre>
+
 
 <pre class="mermaid" style="text-align: center;">
 ---
-title: Request without MASQUERADE
+title: Route path without MASQUERADE
 ---
 sequenceDiagram
-    participant EC as External Device
-    participant WS as Wireguard Server
-    participant N1 as LAN Device
-    EC->>WS: Src 192.168.100.10
-    WS->>N1: Src 192.168.100.10
-    N1--xN1: Dest 192.168.100.10 (dropped)
+    box External Host
+    participant EC as WG Interface (100.10)
+    end
+    box Wireguard Server
+    participant WS as WG Interface (100.1)
+    participant WL as LAN Interface (1.1)
+    end
+    box LAN Host
+    participant N1 as LAN Interface (1.2)
+    end
+    EC->>WS: Src 100.10
+    WS->>WL: Src 100.10 (forward)
+    WL->>N1: Src 100.10 (forward)
+    N1--xN1: Dest 100.10 (dropped)
 </pre>
 
 ## Wireguard on the router
@@ -135,14 +154,15 @@ Eventually I caved and bought a router that supported Wiregaurd natively. No mor
 title: Wireguard server on the gateway
 ---
 flowchart LR
-    GW["Gateway"]
-    ED["External
-    Device"] --> GW
-    ED2["External
-    Device 2"] --> GW
-    GW -. Forward .-> n1[Node 1]
-    GW -. Forward .-> n2[Node 2]
-    GW -. Forward .-> n3[Node 3]
+    GW@{ shape: tag-rect, label: "Gateway
+    (Wireguard Server)"}
+    ED@{ shape: tag-rect, label: "External
+    Host 1"} --> GW
+    ED2@{ shape: tag-rect, label: "External
+    Host 2"} --> GW
+    GW -. Forward .-> n1[LAN Host 1]
+    GW -. Forward .-> n2[LAN Host 2]
+    GW -. Forward .-> n3[LAN Host 3]
     subgraph LAN
         GW
         n1
