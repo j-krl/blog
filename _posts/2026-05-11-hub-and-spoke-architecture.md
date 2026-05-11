@@ -68,7 +68,7 @@ To start forwarding packets between interfaces, the kernel needs to be told to a
 net.ipv4.ip_forward = 1
 ```
 
-Without this setting, the kernel will drop any packet destined for a different interface. `/etc/sysctl.conf` is the configuration file for the `sysctl` program, which reads and writes kernel parameters at runtime. Run `sudo sysctl -p` to reload the configuration without having to reboot.
+Without this setting, the kernel will drop any packet destined for a different interface. `/etc/sysctl.conf` is the configuration file for the `sysctl` program, which reads and writes kernel parameters at runtime. The config files can also exist in the `/etc/sysctl.d/` directory. Run `sudo sysctl --system` to reload your configuration without having to reboot.
 
 ## iptables
 
