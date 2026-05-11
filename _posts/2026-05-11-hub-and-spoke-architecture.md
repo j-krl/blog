@@ -5,7 +5,7 @@ tags:
     - networking
     - homelab
     - wireguard
-date: 2026-05-08
+date: 2026-05-11
 ---
 
 In my last post I demonstrated how to set up a simple 1:1 Wireguard VPN. In my homelab I have expanded that architecture. I have a Kubernetes cluster with three nodes, and I wanted to be able to ssh into the nodes outside my home network, so I set up a Wireguard interface on each node. I then port forwarded a router port for each node so I could access each node individually. The architecture looked like this:
