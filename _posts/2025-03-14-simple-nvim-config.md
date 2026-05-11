@@ -194,15 +194,6 @@ $ brew install pyright ruff
 $ brew install fzf ripgrep bat
 ```
 
-## Just a few more plugins
-
-If running only 5 plugins doesn't satiate you, there's a few more great ones I can suggest:
-
-- **tpope/vim-surround**: A handy plugin for surrounding sections of code with brackets and quotations. This one is so widely used it should debatably be in Neovim core.
-- **unblevable/quick-scope**: A small plugin that highlights unique characters in words on the current line making F/f/T/t horizontal navigation much easier.
-- **tpope/vim-fugitive**: This is an incredible plugin for integrating git into your Vim editing. The main feature I use from it is the interactive blames, where for any line of code I can reblame at the parent commit and see when changes happened.
-- **folke/which-key.nvim**: This plugin pops a handy floating window at the bottom of the screen that shows the currently valid keymaps. It will update as you press keys in sequence. I learned a ton about Neovim through using this initially.
-
 ## This is not the end
 
 I am under no illusion that this is the perfect config, or that your workflow couldn't be improved by a few extra plugins. My personal config is ~100 lines where I have some additional keymaps set up, a few of the default vim options changed and a couple more plugins installed. The point here is to show how powerful Neovim can be out of the box. This is a very functional setup that you can easily build upon. It doesn't require 15 files and 40 plugins to set up a great dev environment -- the base editor is pretty damn good.
