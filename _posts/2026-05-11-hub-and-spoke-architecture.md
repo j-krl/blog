@@ -61,9 +61,18 @@ In this new architecture, Host 1 acts as our server which terminates all our Wir
 
 What makes this possible is the `AllowedIPs` attribute in the Wireguard config. I mentioned in my last post that for egress traffic, the AllowedIPs indicates the CIDR ranges that get routed to the peer from the enclosing block. The important part is that CIDR range *does not* have to be part of the VPN's subnet range. So we can set the AllowedIP range to be the *LAN's* range, and when the packet arrives at the Wireguard server it will forward that packet through its LAN interface. We only need to allow forwarding packets on the Wireguard server.
 
+## Kernel forwarding
+
+To start forwarding packets between interfaces, the kernel needs to be told to allow it. By default, most systems disable this to prevent inadvertently acting as a router. To enable it persistently, add the following line to `/etc/sysctl.conf`:
+```
+net.ipv4.ip_forward = 1
+```
+
+Without this setting, the kernel will drop any packet destined for a different interface. `/etc/sysctl.conf` is the configuration file for the `sysctl` program, which reads and writes kernel parameters at runtime. Run `sudo sysctl -p` to reload the configuration without having to reboot.
+
 ## iptables
 
-The forwarding behaviour will require a little additional configuration. We'll leverage Linux's `iptables` for this. I won't go into great depth on iptables as I am no expert on them, but the general iptable hierarchy looks like this:
+Now we need to enable packet forwarding in the operating system's `iptables`. I won't go into great depth on iptables as I am no expert on them, but the general iptable hierarchy looks like this:
 
 1. Tables
 2. Chains
