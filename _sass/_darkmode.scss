@@ -37,6 +37,16 @@
 
   .icon-sun { display: none; }
   .icon-moon { display: block; }
+
+  @media (min-width: $on-laptop) {
+    width: 36px;
+    height: 36px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
 }
 
 /* Dark mode active state */
@@ -94,6 +104,10 @@ html[data-theme="dark"] {
 
   pre {
     background: #2a2a2a;
+  }
+
+  pre.mermaid {
+    background: transparent;
   }
 
   .highlight {

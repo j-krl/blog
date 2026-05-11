@@ -1,9 +1,10 @@
 ---
-title: "Intro to Wireguard VPN"
+title: "Wireguard Pt. 1: Introduction and Setup"
 layout: post
 tags:
     - networking
     - homelab
+    - wireguard
 date: 2026-04-08
 ---
 
