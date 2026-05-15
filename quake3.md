@@ -89,9 +89,9 @@ Here are some examples of useful in-game commands. Most will require `/rcon`:
 /capturelimit 5     # CTF capture limit
 /timelimit 10       # game time limit
 /g_friendlyfire 0   # turn off friendly fire
+/game_restart <mod> # switch mods
 ```
 
 ## Restore Default Server Settings
 
 If you want to restore the server defaults, run `/rcon exec server.cfg`. This restores only the base game settings. To set the map rotations you'll still have to exec the gametype files specified above.
-
